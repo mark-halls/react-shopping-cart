@@ -5,13 +5,16 @@ import Product from "./Product";
 
 //contexts
 import { ProductContext } from "../contexts/ProductContext";
+import { CartContext } from "../contexts/CartContext";
 
 const Products = () => {
-  const [products, addProduct] = useContext(ProductContext);
+  const [products] = useContext(ProductContext);
+  const [, addToCart] = useContext(CartContext);
+
   return (
     <div className="products-container">
       {products.map(product => (
-        <Product key={product.id} product={product} addItem={addProduct} />
+        <Product key={product.id} product={product} addItem={addToCart} />
       ))}
     </div>
   );
